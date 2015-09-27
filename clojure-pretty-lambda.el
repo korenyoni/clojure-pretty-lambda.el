@@ -1,7 +1,7 @@
 ;; modified by Yonatan Koren to work for Clojure's `fn' keyword
 ;; contact: yon@yonatankoren.com
 ;;
-;;; pretty-lambda-clojure.el --- Show the word `fn' as the Greek letter lambda.
+;;; clojure-pretty-lambda.el --- Show the word `fn' as the Greek letter lambda.
 ;;
 ;; ORIGINAL DESCRIPTION:
 ;; Filename: pretty-lambdada.el
@@ -49,44 +49,44 @@
 ;;; Code:
 
 ;;;###autoload
-(defgroup pretty-lambda-clojure nil
+(defgroup clojure-pretty-lambda nil
   "Display of the word `fn' as the Greek character lambda."
     :group 'convenience :group 'programming)
 
 ;;;###autoload
-(defcustom pretty-lambda-clojure-auto-modes
+(defcustom clojure-pretty-lambda-auto-modes
   '(lisp-mode emacs-lisp-mode lisp-interaction-mode scheme-mode)
-  "*Modes affected by `pretty-lambda-clojure-for-modes'."
-  :type '(repeat symbol) :group 'pretty-lambda-clojure)
+  "*Modes affected by `clojure-pretty-lambda-for-modes'."
+  :type '(repeat symbol) :group 'clojure-pretty-lambda)
 
 ;;;###autoload
-(defun pretty-lambda-clojure-for-modes (&optional turn-off)
-  "Use `pretty-lambda-clojure-mode' for modes in `pretty-lambda-clojure-auto-modes'.
+(defun clojure-pretty-lambda-for-modes (&optional turn-off)
+  "Use `clojure-pretty-lambda-mode' for modes in `clojure-pretty-lambda-auto-modes'.
 `C-u' to turn off."
   (interactive "P")
   (let (hook-var)
     (cond (turn-off
-           (dolist (m  pretty-lambda-clojure-auto-modes)
+           (dolist (m  clojure-pretty-lambda-auto-modes)
              (remove-hook (setq hook-var (intern (concat (symbol-name m) "-hook")))
-                          'turn-on-pretty-lambda-clojure-mode)
-             (add-hook hook-var 'turn-off-pretty-lambda-clojure-mode))
-           (when (memq major-mode pretty-lambda-clojure-auto-modes)
-             (turn-off-pretty-lambda-clojure-mode))) ; Current buffer
+                          'turn-on-clojure-pretty-lambda-mode)
+             (add-hook hook-var 'turn-off-clojure-pretty-lambda-mode))
+           (when (memq major-mode clojure-pretty-lambda-auto-modes)
+             (turn-off-clojure-pretty-lambda-mode))) ; Current buffer
           (t
-           (dolist (m  pretty-lambda-clojure-auto-modes)
+           (dolist (m  clojure-pretty-lambda-auto-modes)
              (remove-hook (setq hook-var (intern (concat (symbol-name m) "-hook")))
-                          'turn-off-pretty-lambda-clojure-mode)
-             (add-hook hook-var 'turn-on-pretty-lambda-clojure-mode))
-           (when (memq major-mode pretty-lambda-clojure-auto-modes)
-             (turn-on-pretty-lambda-clojure-mode)))))) ; Current buffer
+                          'turn-off-clojure-pretty-lambda-mode)
+             (add-hook hook-var 'turn-on-clojure-pretty-lambda-mode))
+           (when (memq major-mode clojure-pretty-lambda-auto-modes)
+             (turn-on-clojure-pretty-lambda-mode)))))) ; Current buffer
 
 ;;;###autoload
-(define-minor-mode pretty-lambda-clojure-mode
+(define-minor-mode clojure-pretty-lambda-mode
     "Buffer-local minor mode to display the word `fn' as the Greek letter lambda.
 With ARG, turn mode on if ARG is positive, off otherwise."
   :init-value nil
-  (cond (pretty-lambda-clojure-mode
-         (pretty-lambda-clojure)
+  (cond (clojure-pretty-lambda-mode
+         (clojure-pretty-lambda)
          (font-lock-fontify-buffer))
         (t
          (font-lock-remove-keywords
@@ -100,30 +100,30 @@ With ARG, turn mode on if ARG is positive, off otherwise."
              (decompose-region (match-beginning 0) (match-end 0)))))))
 
 ;;;###autoload
-(define-globalized-minor-mode global-pretty-lambda-clojure-mode
-    pretty-lambda-clojure-mode turn-on-pretty-lambda-clojure-mode
+(define-globalized-minor-mode global-clojure-pretty-lambda-mode
+    clojure-pretty-lambda-mode turn-on-clojure-pretty-lambda-mode
     "Global minor mode to display the word `fn' as the Greek letter lambda.
 With ARG, turn mode on if ARG is positive, off otherwise.")
 
 ;; This was originally from <URL: http://www.emacswiki.org/emacs/PrettyLambda>.
 ;; See that page for the history of this code snippet.  I just added MODE as an
 ;; optional argument.
-(defun pretty-lambda-clojure (&optional mode)
+(defun clojure-pretty-lambda (&optional mode)
   "Display the word `fn' as the Greek letter lambda.
-Non-nil optional arg means use pretty-lambda-clojure display in that MODE.
-nil means use pretty-lambda-clojure display for the current mode."
+Non-nil optional arg means use clojure-pretty-lambda display in that MODE.
+nil means use clojure-pretty-lambda display for the current mode."
   (font-lock-add-keywords
    mode `(("\\<fn\\>"
    (0 (progn (compose-region (match-beginning 0) (match-end 0)
         ,(make-char 'greek-iso8859-7 107))
       nil))))))
 
-(defun turn-on-pretty-lambda-clojure-mode  () (pretty-lambda-clojure-mode  1))
-(defun turn-off-pretty-lambda-clojure-mode () (pretty-lambda-clojure-mode -1))
+(defun turn-on-clojure-pretty-lambda-mode  () (clojure-pretty-lambda-mode  1))
+(defun turn-off-clojure-pretty-lambda-mode () (clojure-pretty-lambda-mode -1))
 
 ;;;;
 
-(provide 'pretty-lambda-clojure)
+(provide 'clojure-pretty-lambda)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;; pretty-lambda-clojure.el ends here
+;;; clojure-pretty-lambda.el ends here
