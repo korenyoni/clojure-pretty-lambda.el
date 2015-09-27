@@ -1,4 +1,4 @@
-;; modified by Yonatan Koren to work for clojure's `fn' keyword
+;; modified by Yonatan Koren to work for Clojure's `fn' keyword
 ;; contact: yon@yonatankoren.com
 ;;
 ;;; pretty-lambda-clojure.el --- Show the word `fn' as the Greek letter lambda.
