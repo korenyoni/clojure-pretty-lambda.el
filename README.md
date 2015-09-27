@@ -5,6 +5,7 @@ Whenever `fn` occurs as a separate word, it is displayed as the greek letter lam
 ##pretty-lambda-clojure.el
 
 Directly modified from pretty-lambdada.el, where Emacs Lisp anonymous function keyword `lambda` is is displayed the greek letter.
+All I did was replace the regular expressions.
 
 ##How to use it:
 
