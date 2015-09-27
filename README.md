@@ -13,7 +13,7 @@ Directly modified from pretty-lambdada.el, where Emacs Lisp anonymous function k
 3. Enable `pretty-lambda-clojure-mode`
 
 If anything, the functionality is exactly the same as
-(url)[http://www.emacswiki.org/emacs/pretty-lambdada.el].
+[pretty-lambdada.el](http://www.emacswiki.org/emacs/pretty-lambdada.el).
 
 Original Author: David Adams
 
