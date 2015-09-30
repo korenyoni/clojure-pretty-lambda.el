@@ -12,7 +12,7 @@ it was more idiomatic to have the word clojure at the front.
 
 When trying to change the regular expressions so that `fn?` is not changed to a lambda, I had a lot of trouble. After playing around with the logic for hours,
 I eventually did some searching and found [this config by cemeric](https://github.com/cemerick/.emacs.d#pretty-lambda-and-co). Only after using this user's regular expressions and
-breaking the original prettylambdada.el, I realized exactly how the parameters for font-lock-add-keywords work, namely the indeces in (match-begin) and (match-end).
+breaking the original prettylambdada.el, I realized exactly how the parameters for font-lock-add-keywords work, namely the indeces in `(match-begin)` and `(match-end)`.
 
 ##How to use it:
 
