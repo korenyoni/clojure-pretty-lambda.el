@@ -14,6 +14,8 @@ When trying to change the regular expressions so that `fn?` is not changed to a 
 I eventually did some searching and found [this config by cemeric](https://github.com/cemerick/.emacs.d#pretty-lambda-and-co). Only after using this user's regular expressions and
 breaking the original prettylambdada.el, I realized exactly how the parameters for font-lock-add-keywords work, namely the indeces in `(match-begin)` and `(match-end)`.
 
+I also made a [post](http://yonatankoren.com/post/4-emacs-cider-and-me) on my blog about my experience with emacs and porting pretty-lambdada.el to Clojure.
+
 ##How to use it:
 
 1. Make sure clojure-pretty-lambda.el is in your load path.
