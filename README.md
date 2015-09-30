@@ -1,6 +1,6 @@
 #Pretty Lambda for Clojure
 
-Whenever `fn` occurs as a separate word, it is displayed as the greek letter lambda.
+Whenever `fn` occurs as a separate word and followed by an opening bracket, it is displayed as the greek letter lambda.
 
 ##clojure-pretty-lambda.el
 
