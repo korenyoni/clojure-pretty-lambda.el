@@ -90,14 +90,14 @@ With ARG, turn mode on if ARG is positive, off otherwise."
          (font-lock-fontify-buffer))
         (t
          (font-lock-remove-keywords
-          nil `(("\\<fn\\>"
-                 (0 (progn (compose-region (match-beginning 0) (match-end 0)
+          nil `(("(\\(fn\\)[\[[:space:]]"
+                 (0 (progn (compose-region (match-beginning 1) (match-end 1)
                                            ,(make-char 'greek-iso8859-7 107))
                            nil)))))
          (save-excursion
            (goto-char (point-min))
-           (while (re-search-forward "\\<fn\\>" nil t)
-             (decompose-region (match-beginning 0) (match-end 0)))))))
+           (while (re-search-forward "(\\(fn\\)[\[[:space:]]" nil t)
+             (decompose-region (match-beginning 1) (match-end 1)))))))
 
 ;;;###autoload
 (define-globalized-minor-mode global-clojure-pretty-lambda-mode
@@ -113,8 +113,8 @@ With ARG, turn mode on if ARG is positive, off otherwise.")
 Non-nil optional arg means use clojure-pretty-lambda display in that MODE.
 nil means use clojure-pretty-lambda display for the current mode."
   (font-lock-add-keywords
-   mode `(("\\<fn\\>"
-   (0 (progn (compose-region (match-beginning 0) (match-end 0)
+   mode `(("(\\(fn\\)[\[[:space:]]"
+   (0 (progn (compose-region (match-beginning 1) (match-end 1)
         ,(make-char 'greek-iso8859-7 107))
       nil))))))
 
